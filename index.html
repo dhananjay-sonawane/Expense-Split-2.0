@@ -11,13 +11,33 @@
 </head>
 
 <body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <button id="close-sidebar" class="close-btn">&times;</button>
+        <ul class="nav-links">
+            <li><button id="nav-home">Home</button></li>
+            <li><button id="nav-history">History</button></li>
+            <li><button id="nav-send">Send Split</button></li>
+        </ul>
+    </div>
+
     <div class="container">
         <header>
-            <h1>Expense Splitter</h1>
-            <p>Accurate and fair expense sharing</p>
+            <button id="hamburger-btn" class="hamburger-btn">☰</button>
+            <div class="header-text">
+                <h1>Expense Splitter</h1>
+                <p>Accurate and fair expense sharing</p>
+            </div>
         </header>
 
-        <main>
+        <!-- HOME VIEW -->
+        <main id="home-view" class="view">
+            
+            <div style="margin-bottom: 1.5rem;">
+                <input type="text" id="session-title" placeholder="Event / Trip Title (e.g. Goa Trip)" style="width: 100%; font-size: 1.25rem; font-weight: 600; border: 2px dashed var(--primary); padding: 1rem; text-align: center; background: rgba(79, 70, 229, 0.05); color: var(--primary); border-radius: 12px;">
+            </div>
+
             <section class="card">
                 <h2>1. Members</h2>
                 <form id="member-form">
@@ -44,12 +64,50 @@
 
             <section class="card">
                 <h2>3. Settlement</h2>
-                <button id="calculate-btn" class="primary-btn">Calculate Settlement</button>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button id="calculate-btn" class="primary-btn">Calculate Settlement</button>
+                    <button id="save-btn" class="primary-btn" style="background-color: var(--success, #10B981); color: white;">Save Split</button>
+                    <button id="reset-btn" class="delete-btn primary-btn" style="background-color: var(--danger);">Reset All</button>
+                </div>
                 <div id="settlement-results" class="results-container hidden">
                     <!-- Results will be injected here -->
                 </div>
             </section>
         </main>
+
+        <!-- HISTORY VIEW -->
+        <main id="history-view" class="view hidden">
+            <section class="card">
+                <h2 style="display: flex; justify-content: space-between; align-items: center;">
+                    Saved Splits
+                    <button id="clear-history-btn" class="delete-btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Clear All</button>
+                </h2>
+                <div id="history-list"></div>
+            </section>
+        </main>
+
+        <!-- SEND SELECTION MODAL -->
+        <div id="send-modal" class="modal hidden">
+            <!-- Step 1: Select Split -->
+            <div class="modal-content card" id="send-step-1">
+                <h2>Select Split to Send</h2>
+                <div id="send-history-list" class="modal-list"></div>
+                <button id="close-send-modal" class="primary-btn mt-1" style="background-color: var(--danger);">Cancel</button>
+            </div>
+            
+            <!-- Step 2: Select Method -->
+            <div class="modal-content card hidden" id="send-step-2">
+                <h2>Send via...</h2>
+                <div id="send-preview" style="background: rgba(79, 70, 229, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border: 1px dashed var(--primary); font-size: 0.9rem; max-height: 200px; overflow-y: auto; white-space: pre-wrap; text-align: left;"></div>
+                <div class="modal-list" style="display: flex; gap: 1rem; flex-direction: column;">
+                    <button id="btn-send-whatsapp" class="primary-btn" style="background-color: #25D366;">WhatsApp</button>
+                    <button id="btn-send-email" class="primary-btn">Email</button>
+                    <button id="btn-send-sms" class="primary-btn" style="background-color: #007AFF;">SMS Message</button>
+                </div>
+                <button id="back-send-modal" class="primary-btn mt-1" style="background-color: var(--text-muted);">Back</button>
+            </div>
+        </div>
+
     </div>
     <script src="app.js"></script>
     <script>

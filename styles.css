@@ -190,3 +190,155 @@ li {
     font-size: 0.9rem;
     color: var(--text-muted);
 }
+
+/* Hamburger & Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 2rem;
+}
+.header-text {
+    text-align: center;
+}
+.hamburger-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--primary);
+    padding: 0;
+    cursor: pointer;
+}
+.hamburger-btn:hover {
+    background: none;
+    color: var(--primary-hover);
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background: var(--card-bg);
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    z-index: 1000;
+    padding: 2rem 1rem;
+}
+.sidebar.open {
+    left: 0;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-muted);
+    padding: 0;
+    cursor: pointer;
+}
+.close-btn:hover {
+    background: none;
+    color: var(--text-main);
+}
+.nav-links {
+    margin-top: 2rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.nav-links button {
+    width: 100%;
+    background: none;
+    color: var(--text-main);
+    text-align: left;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+.nav-links button:hover {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.sidebar-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* View Toggling */
+.view {
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal.hidden {
+    display: none !important;
+}
+.modal-content {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.modal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* History Items */
+.history-item {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-color);
+}
+.history-item-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.history-item-details {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+.mt-1 { margin-top: 1rem; }
