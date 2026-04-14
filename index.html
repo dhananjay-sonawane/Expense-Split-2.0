@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Splitter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4F46E5">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Expense Splitter</h1>
+            <p>Accurate and fair expense sharing</p>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2>1. Members</h2>
+                <form id="member-form">
+                    <input type="text" id="member-name" placeholder="Enter member name" required>
+                    <button type="submit">Add Member</button>
+                    <button type="button" id="cancel-edit-member" class="hidden">Cancel Edit</button>
+                </form>
+                <ul id="member-list"></ul>
+            </section>
+
+            <section class="card">
+                <h2>2. Expenses</h2>
+                <form id="expense-form">
+                    <select id="expense-payer" required>
+                        <option value="" disabled selected>Select Payer</option>
+                    </select>
+                    <input type="number" id="expense-amount" placeholder="Amount paid" step="0.01" min="0.01" required>
+                    <input type="text" id="expense-desc" placeholder="What was it for? (Optional)">
+                    <button type="submit">Add Expense</button>
+                    <button type="button" id="cancel-edit-expense" class="hidden">Cancel Edit</button>
+                </form>
+                <ul id="expense-list"></ul>
+            </section>
+
+            <section class="card">
+                <h2>3. Settlement</h2>
+                <button id="calculate-btn" class="primary-btn">Calculate Settlement</button>
+                <div id="settlement-results" class="results-container hidden">
+                    <!-- Results will be injected here -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registered successfully.'))
+                    .catch(err => console.log('Service worker registration failed:', err));
+            });
+        }
+    </script>
+</body>
+
+</html>
