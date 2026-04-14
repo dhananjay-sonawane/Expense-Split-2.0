@@ -54,5 +54,8 @@ Imagine a trip with 4 members: A, B, C, and D, where everyday expenses are share
 - PWA Architecture
 
 ## Screenshots
-_You can view an operational demonstration of the app resolving transactions here:_
-*(Add your repository relative images here!)*
+![Expense Splitter](screenshot 1.png)
+![Expense Splitter](screenshot 2.png)
+![Expense Splitter](screenshot 3.png)
+![Expense Splitter](screenshot 4.png)
+
